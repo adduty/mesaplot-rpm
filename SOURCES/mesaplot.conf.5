@@ -1,0 +1,93 @@
+.TH mesaplot.conf 5 "10 June 2016"
+.SH NAME
+mesaplot.conf \- Configuration settings for 
+.XR MESAplot 1 .
+.SH SYNOPSIS
+.B /etc/mesaplot.conf
+.SH DESCRIPTION
+.XR mesaplot 1
+reads configuration data from /etc/mesaplot.conf (or the file specified with -f on the command line).  The file contains keyword-argument pairs, one per line.  Lines starting with ‘#’ and empty lines are interpreted as comments.  Arguments may optionally be enclosed in double quotes (") in order to represent arguments containing spaces.
+
+The possible keywords and their meanings are as follows:
+
+.B use_default_path
+.RS
+Valid arguments are "True" or "False". Default is "False". If you change use_default_path to True, and change default_path to point to the folder with the MESA output data, it will skip the folder selection window and automatically open that data when you open MESAplot_v0.3.0.2.py. When you then run MESAplot_v0.3.2.py (for example, double click on the icon), the interface should start uploading the files in your folder. If you set keep use_default_path on False, opening MESAplot_v0.3.2.py will immediately open a folder selection dialog.
+.RE
+.B default_path
+.RS
+This is the path for mesaplot to find and store files in. It can be any absolute filesystem path. Default is "~/mesaplot".
+.RE
+.B window_position_x
+.RS
+This is the horizontal window position in pixels. Must be an integer. Default is "50".
+.RE
+.B window_position_y
+.RS
+This is the vertical window position in pixels. Must be an integer. Default is "30".
+.RE
+.B window_size_x
+.RS
+This is the horizontal window size in pixels. Must be an integer. Default is "1500".
+.RE
+.B window_size_y
+.RS
+This is the vertical window size in pixels. Must be an integer. Default is "1000".
+.RE
+.B load_all_profiles
+.RS
+Whether to load all profiles. Valid arguments are "True" or "False". Default is "True".
+.RE
+.B font_size_for_plot_labels
+.RS
+Font size for plot labels in pixels. Must be an integer. Default is "14".
+.RE
+.B plot_line_color
+.RS
+Color of plot line. Default is "black".
+.RE
+.B lbl_color
+.RS
+Color of label. Default is "blue".
+.RE
+.B age_line_color
+.RS
+Color of age line. Default is "red".
+.RE
+.B default_central_abundances
+.RS
+Default values for central abundances. This must be an array. Default is "['h1', 'he4', 'c12', 'o16']".
+.RE
+.B default_profile_abundances
+.RS
+Default values for profile abundances. This must be an array. Default is "['h1', 'he4', 'c12', 'o16']".
+.RE
+.B default_central_reactions
+.RS
+Default values for central reactions. This must be an array. Default is "['pp','cno','tri_alfa','burn_c']".
+.RE
+.B default_profile_reactions
+.RS
+Default values for profile reactions. This must be an array. Default is "['pp','cno','tri_alfa','burn_c']".
+.RE
+.B plotExportFileType
+.RS
+File type to save plot as. Valid values are "pgf", "svgz", "tiff", "jpg", "raw", "jpeg", "png", "ps", "emf", "svg", "eps", "rgba", "pdf", "tif". Default is "png".
+.RE
+
+.B NOTE:
+you should have only one history and at least one profile in the data folder. 
+The names have to be history and profile. For now, you cannot upload files with different names but we plan to implement this functionality soon.
+
+.SH FILES
+.I /etc/mesaplot.conf
+.RS
+This file is used to set config options for
+.XR mesaplot 1 .
+.RE
+.SH SEE ALSO
+.BR mesaplot (1)
+.SH AUTHORS
+Maurizio Giannotti (mgiannotti@barry.edu), Michael Wise, Wesam Azaizeh, Daria Vasilyeva, Sanja Zivanovic.
+
+.I "http://mesastar.org/tools-utilities/python-based-stuff/mesaplot/mesaplot_v0-3.2-1"
