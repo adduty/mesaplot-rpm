@@ -27,10 +27,19 @@ MESAplot is an open-source, graphical and dynamical interface written in python 
 
 %install
 #make install DESTDIR=%{buildroot}
-cp *.py %{_pydir}i/mesaplot
+cp *.py %{_pydir}/mesaplot
 cp mesaplot.conf %{_sysconfdir}
 cp mesaplot.1.gz %{_mandir}/man1
 cp mesaplot.conf.5.gz %{_mandir}/man5
+
+chmod 644 %{_mandir}/man1/mesaplot.1.gz
+chmod 644 %{_mandir}/man5/mesaplot.conf.5.gz
+chown root:root %{_mandir}/man1/mesaplot.1.gz
+chown root:root %{_mandir}/man5/mesaplot.conf.5.gz
+chmod 644 %{_sysconfdir}/mesaplot.conf
+chown root:root %{_sysconfdir}/mesaplot.conf
+chmod 644 %{_pydir}/mesaplot/*
+chown root:root %{_pydir}/mesaplot/*
 
 
 %files
