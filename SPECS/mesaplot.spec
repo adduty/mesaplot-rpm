@@ -25,39 +25,35 @@ mkdir -p %{_pydir}/mesaplot
 mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}
 mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man1
 mkdir $RPM_BUILD_ROOT/%{_mandir}/man5
+mkdir -p $RPM_BUILD_ROOT/%{_bindir}
 
-cp *.py %{_pydir}/mesaplot
-cp mesaplot.conf $RPM_BUILD_ROOT/%{_sysconfdir}
-cp mesaplot.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1
-cp mesaplot.conf.5.gz $RPM_BUILD_ROOT/%{_mandir}/man5
-
-chmod 644 $RPM_BUILD_ROOT/%{_mandir}/man1/mesaplot.1.gz
-chmod 644 $RPM_BUILD_ROOT/%{_mandir}/man5/mesaplot.conf.5.gz
-#chown root:root $RPM_BUILD_ROOT/%{_mandir}/man1/mesaplot.1.gz
-#chown root:root $RPM_BUILD_ROOT/%{_mandir}/man5/mesaplot.conf.5.gz
-chmod 644 $RPM_BUILD_ROOT/%{_sysconfdir}/mesaplot.conf
-#chown root:root $RPM_BUILD_ROOT/%{_sysconfdir}/mesaplot.conf
-chmod 644 %{_pydir}/mesaplot/*
-#chown root:root %{_pydir}/mesaplot/*
-
+install -m 644 *.py %{_pydir}/mesaplot
+install -m 644 mesaplot.conf $RPM_BUILD_ROOT/%{_sysconfdir}
+install -m 644 mesaplot.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1
+install -m 644 mesaplot.conf.5.gz $RPM_BUILD_ROOT/%{_mandir}/man5
+install -m 755 mesaplot $RPM_BUILD_ROOT/%{_bindir}
 
 %files
 %defattr(644,root,root)
-#%{_pydir}/mesaplot/*.py
-#$RPM_BUILD_ROOT/%{_sysconfdir}/mesaplot.conf
-#$RPM_BUILD_ROOT/%{_mandir}/man1/mesaplot.1.gz
-#$RPM_BUILD_ROOT/%{_mandir}/man5/mesaplot.conf.5.gz
-%config(noreplace) %verify(no md5 mtime size) /etc/mesaplot.conf
+%config(noreplace) %verify(not md5 mtime size) /etc/mesaplot.conf
 /usr/share/man/man1/mesaplot.1.gz
 /usr/share/man/man5/mesaplot.conf.5.gz
 /usr/lib/python2.7/site-packages/mesaplot/file_manager.py
 /usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.py
 /usr/lib/python2.7/site-packages/mesaplot/plot_manager.py
 /usr/lib/python2.7/site-packages/mesaplot/mesaplot.py
+#bytecode files get created by rpmbuild and need to be included in files list
+/usr/lib/python2.7/site-packages/mesaplot/file_manager.pyc
+/usr/lib/python2.7/site-packages/mesaplot/file_manager.pyo
+/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.pyc
+/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.pyo
+/usr/lib/python2.7/site-packages/mesaplot/mesaplot.pyc
+/usr/lib/python2.7/site-packages/mesaplot/mesaplot.pyo
+/usr/lib/python2.7/site-packages/mesaplot/plot_manager.pyc
+/usr/lib/python2.7/site-packages/mesaplot/plot_manager.pyo
+%attr(755,root,root) /usr/bin/mesaplot
 
 %doc README
-
-
 
 %changelog
 * Tue Jun 14 2016 Andrew Duty <tisbeok@gmail.com>
