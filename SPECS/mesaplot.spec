@@ -20,7 +20,7 @@ creating this new software was to make something very easy to install and \
 use for both research and educational purposes.
 
 %prep
-%setup
+%setup -q
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{python_sitelib}/mesaplot
@@ -37,23 +37,23 @@ install -m 755 mesaplot $RPM_BUILD_ROOT%{_bindir}
 
 %files
 %defattr(-,root,root)
-%config(noreplace) %verify(not md5 mtime size) /etc/mesaplot.conf
-/usr/share/man/man1/mesaplot.1.gz
-/usr/share/man/man5/mesaplot.conf.5.gz
-/usr/lib/python2.7/site-packages/mesaplot/file_manager.py
-/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.py
-/usr/lib/python2.7/site-packages/mesaplot/plot_manager.py
-/usr/lib/python2.7/site-packages/mesaplot/mesaplot.py
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mesaplot.conf
+%{_mandir}/man1/mesaplot.1.gz
+%{_mandir}/man5/mesaplot.conf.5.gz
+%{python_sitelib}/mesaplot/file_manager.py
+%{python_sitelib}/mesaplot/mesaoutput1.py
+%{python_sitelib}/mesaplot/plot_manager.py
+%{python_sitelib}/mesaplot/mesaplot.py
 #bytecode files get created by rpmbuild and need to be included in files list
-/usr/lib/python2.7/site-packages/mesaplot/file_manager.pyc
-/usr/lib/python2.7/site-packages/mesaplot/file_manager.pyo
-/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.pyc
-/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.pyo
-/usr/lib/python2.7/site-packages/mesaplot/mesaplot.pyc
-/usr/lib/python2.7/site-packages/mesaplot/mesaplot.pyo
-/usr/lib/python2.7/site-packages/mesaplot/plot_manager.pyc
-/usr/lib/python2.7/site-packages/mesaplot/plot_manager.pyo
-/usr/bin/mesaplot
+%{python_sitelib}/mesaplot/file_manager.pyc
+%{python_sitelib}/mesaplot/file_manager.pyo
+%{python_sitelib}/mesaplot/mesaoutput1.pyc
+%{python_sitelib}/mesaplot/mesaoutput1.pyo
+%{python_sitelib}/mesaplot/mesaplot.pyc
+%{python_sitelib}/mesaplot/mesaplot.pyo
+%{python_sitelib}/mesaplot/plot_manager.pyc
+%{python_sitelib}/mesaplot/plot_manager.pyo
+%{_bindir}/mesaplot
 
 %doc README
 
