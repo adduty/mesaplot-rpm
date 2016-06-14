@@ -42,14 +42,23 @@ chmod 644 %{_pydir}/mesaplot/*
 
 
 %files
-%{_pydir}/mesaplot/*.py
-$RPM_BUILD_ROOT/%{_sysconfdir}/mesaplot.conf
-$RPM_BUILD_ROOT/%{_mandir}/man1/mesaplot.1.gz
-$RPM_BUILD_ROOT/%{_mandir}/man5/mesaplot.conf.5.gz
+%defattr(644,root,root)
+#%{_pydir}/mesaplot/*.py
+#$RPM_BUILD_ROOT/%{_sysconfdir}/mesaplot.conf
+#$RPM_BUILD_ROOT/%{_mandir}/man1/mesaplot.1.gz
+#$RPM_BUILD_ROOT/%{_mandir}/man5/mesaplot.conf.5.gz
+%config(noreplace) %verify(no md5 mtime size) /etc/mesaplot.conf
+/usr/share/man/man1/mesaplot.1.gz
+/usr/share/man/man5/mesaplot.conf.5.gz
+/usr/lib/python2.7/site-packages/mesaplot/file_manager.py
+/usr/lib/python2.7/site-packages/mesaplot/mesaoutput1.py
+/usr/lib/python2.7/site-packages/mesaplot/plot_manager.py
+/usr/lib/python2.7/site-packages/mesaplot/mesaplot.py
 
-%doc
+%doc README
 
 
 
 %changelog
-
+* Tue Jun 14 2016 Andrew Duty <tisbeok@gmail.com>
+- first release
