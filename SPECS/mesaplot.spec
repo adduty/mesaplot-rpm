@@ -13,7 +13,11 @@ BuildRequires:  python
 Requires:       python >= 2.6, numpy, python-matplotlib, wxPython
 
 %description
-MESAplot is an open-source, graphical and dynamical interface written in python for plotting MESA data. It is a replacement for the mathematica-based MESAFace. It uses wxPython, matplotlib, and numpy. One of our major goals in creating this new software was to make something very easy to install and use for both research and educational purposes.
+MESAplot is an open-source, graphical and dynamical interface written in \
+python for plotting MESA data. It is a replacement for the mathematica-based \
+MESAFace. It uses wxPython, matplotlib, and numpy. One of our major goals in \
+creating this new software was to make something very easy to install and \
+use for both research and educational purposes.
 
 %prep
 %setup
