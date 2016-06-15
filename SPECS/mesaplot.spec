@@ -34,10 +34,12 @@ install -m 644 mesaplot.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install -m 644 mesaplot.1.gz $RPM_BUILD_ROOT%{_mandir}/man1
 install -m 644 mesaplot.conf.5.gz $RPM_BUILD_ROOT%{_mandir}/man5
 install -m 755 mesaplot $RPM_BUILD_ROOT%{_bindir}
+ln -s %{_sysconfdir}/mesaplot.conf $RPM_BUILD_ROOT%{python_sitelib}/mesaplot/default_settings.py
 
 %files
 %defattr(-,root,root)
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mesaplot.conf
+%{python_sitelib}/mesaplot/default_settings.py
 %{_mandir}/man1/mesaplot.1.gz
 %{_mandir}/man5/mesaplot.conf.5.gz
 %{python_sitelib}/mesaplot/file_manager.py
