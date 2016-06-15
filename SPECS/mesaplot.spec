@@ -9,8 +9,13 @@ URL:            http://mesastar.org/tools-utilities/python-based-stuff/mesaplot/
 Source0:        http://www.mleewise.com/mesaplot-%{version}.tgz
 BuildArch:      noarch
 
-BuildRequires:  python
-Requires:       python >= 2.6, numpy, python-matplotlib, wxPython
+BuildRequires:  python >= 2.6
+BuildRequires:  python < 3
+Requires:       python >= 2.6
+Requires:       python < 3
+Requires:       numpy
+Requires:       python-matplotlib
+Requires:       wxPython
 
 %description
 MESAplot is an open-source, graphical and dynamical interface written in \
