@@ -50,6 +50,7 @@ mkdir $RPM_BUILD_ROOT%{_mandir}/man5
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 
 install -m 644 *.py $RPM_BUILD_ROOT%{python_sitelib}/mesaplot
+install -m 666 config.txt $RPM_BUILD_ROOT%{python_sitelib}/mesaplot
 install -m 644 mesaplot.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install -m 644 mesaplot.1.gz $RPM_BUILD_ROOT%{_mandir}/man1
 install -m 644 mesaplot.conf.5.gz $RPM_BUILD_ROOT%{_mandir}/man5
@@ -69,6 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/mesaplot/mesaoutput1.py
 %{python_sitelib}/mesaplot/plot_manager.py
 %{python_sitelib}/mesaplot/mesaplot.py
+%{python_sitelib}/mesaplot/config.txt
 #bytecode files get created by rpmbuild and need to be included in files list
 %{python_sitelib}/mesaplot/file_manager.pyc
 %{python_sitelib}/mesaplot/file_manager.pyo
