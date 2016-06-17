@@ -1,0 +1,49 @@
+--- mesaplot-0.3.4/mesaplot.py.orig	2016-06-17 15:03:43.996645979 -0600
++++ mesaplot-0.3.4/mesaplot.py	2016-06-17 15:05:09.643575246 -0600
+@@ -9,7 +9,7 @@ import wx , numpy as np, matplotlib
+ matplotlib.use('WXAgg')
+ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg 
+ from matplotlib.figure import Figure
+-import pylab as pl, matplotlib.pyplot as plt, datetime, re, os, MESAoutput1, default_settings as ds
++import pylab as pl, matplotlib.pyplot as plt, datetime, re, os, mesaoutput1, default_settings as ds
+ from wx.lib.wordwrap import wordwrap
+ 
+ ##Allows user to use default path and skip file open dialogue. Also checks if the requested default path exists.
+@@ -21,14 +21,14 @@ if ds.use_default_path:
+     else:
+         print 'Warning ! use_default_path is True but the attempted path:\n   ' + path_to_data + '\ndoes not exist. \
+ Let\'s make believe use_default_path is false :) opening fileManager'
+-        import File_Manager as FM
++        import file_manager as FM
+         path_to_data=FM.path_folder
+ else:
+-    import File_Manager as FM
++    import file_manager as FM
+     path_to_data=FM.path_folder
+ 
+ ##Uses supplied path to instance data
+-odat = MESAoutput1.initData(path_to_data)
++odat = mesaoutput1.initData(path_to_data)
+ 
+ class container(wx.Frame):
+     def __init__(self,title,pos,size):
+@@ -872,15 +872,15 @@ app.MainLoop()
+ ## 6-13-14 Arbitrarily designated as version 0.3
+ ## 6-14-14 Fixed plot save function. The images are now properly cropped to not include segments of each other, using Shrink(xm,ym). v.0.3.1
+ ## 6-14-14 Fixed a bug where using 'use_default_path=True' would not set the working directory to the MESAplot directory, not allowing saving of plots. v0.3.1
+-## 6-14-14 Fixed File_Manager bug that caused OSX systems to close it immediately. v0.3.2
+-## 6-21-14 Changed MESAoutput1.py to allow handling of data named using old format (star.log, log1.data)
+-## 6-21-14 Changed a spot in File_Manager for the config.txt file, where a slash was still being used instead of os.path.sep. This was causing crashes in linux.
++## 6-14-14 Fixed file_manager bug that caused OSX systems to close it immediately. v0.3.2
++## 6-21-14 Changed mesaoutput1.py to allow handling of data named using old format (star.log, log1.data)
++## 6-21-14 Changed a spot in file_manager for the config.txt file, where a slash was still being used instead of os.path.sep. This was causing crashes in linux.
+ ## 8-5-14 Rewrote prune function, which handles duplicate or non-chronological models. 
+ 
+ #########   Todo   #########
+ ## Process profile image before saving, removing the top portion that catches text from the above history plot (or find out how to pull image position out correctly to begin with) MW
+ ## Arrange on___ functions into logical order
+-## Move 'use_default_path' check into File_Manager
++## Move 'use_default_path' check into file_manager
+ ## Allow opening of Hplot or Pplot into new pyplot windows.
+ ## Change "save both figures" to two separate options, one for each plot.
+ ## Allow support for non-standard data file names in preferences (ie besides history and star.log)

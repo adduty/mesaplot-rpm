@@ -1,0 +1,11 @@
+--- mesaplot-0.3.4/mesaoutput1.py.orig	2016-06-17 15:03:21.948921614 -0600
++++ mesaplot-0.3.4/mesaoutput1.py	2016-06-17 15:04:07.939346655 -0600
+@@ -3,7 +3,7 @@ import linecache
+ #import matplotlib.pyplot as plt
+ import os
+ import default_settings as ds
+-import File_Manager as FM
++import file_manager as FM
+ '''
+ This module provides tables with data from the MESA run output.
+ The output is found in the folder specified by --> aPath
