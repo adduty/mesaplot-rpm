@@ -6,8 +6,12 @@ Summary:        A graphical and dynamical interface written in python for plotti
 Group:          Applications/File
 License:        GPLv2
 URL:            http://mesastar.org/tools-utilities/python-based-stuff/mesaplot/mesaplot_v0-3.2-1
-Source0:        http://www.mleewise.com/mesaplot-%{version}.tgz
+Source0:        http://www.mleewise.com/mesaplot-%{version}.tar.gz
 BuildArch:      noarch
+
+patch0: %{name}_to_lower.patch
+
+patch1: mesaoutput1_to_lower.patch
 
 BuildRequires:  python >= 2.6
 BuildRequires:  python < 3
@@ -15,6 +19,7 @@ Requires:       python >= 2.6
 Requires:       python < 3
 Requires:       numpy
 Requires:       python-matplotlib
+Requires:       python-matplotlib-wx
 Requires:       wxPython
 
 %description
@@ -26,6 +31,12 @@ use for both research and educational purposes.
 
 %prep
 %setup -q
+
+# correct refereces to uppercase modules in mesaplot.py
+%patch0 -p1
+
+# correct refereces to uppercase modules in mesaoutput1.py
+%patch1 -p1
 
 %build
 
