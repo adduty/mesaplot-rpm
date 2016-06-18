@@ -64,6 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mesaplot.conf
 %{python_sitelib}/mesaplot/default_settings.py
+%exclude %{python_sitelib}/mesaplot/default_settings.pyc
+%exclude %{python_sitelib}/mesaplot/default_settings.pyo
 %{_mandir}/man1/mesaplot.1.gz
 %{_mandir}/man5/mesaplot.conf.5.gz
 %{python_sitelib}/mesaplot/file_manager.py
